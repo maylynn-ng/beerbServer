@@ -1,22 +1,25 @@
-import sequelize from './index';
+module.exports = (sequelize, DataTypes) => {
+  const Location = sequelize.define('Locations', {
+    placeId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    boroughId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    longitude: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    latitude: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+  });
 
-const Location = sequize.define('Locations', {
-  placeId: {
-    type: Datatypes.INTEGER,
-    allowNull: false,
-  },
-  boroughId: {
-    type: Datatypes.INTEGER,
-    allowNull: false,
-  },
-  longitude: {
-    type: Datatypes.INTERGER,
-    allowNull: false,
-  },
-  latitude: {
-    type: Datatypes.INTEGER,
-    allowNull: false,
-  },
-});
-
-console.log(Location === sequelize.models.Location);
+  Location.associate = model => {
+    Location.belongsTo(model.User);
+  };
+  return Location;
+};

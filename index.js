@@ -1,22 +1,15 @@
 require('dotenv').config();
-
+const db = require('./models/index');
 const express = require('express');
 const router = require('./router/routes');
-const Sequelize = require('sequelize');
+
 const app = express();
 
 const port = process.env.PORT;
 
-const sequelize = new Sequelize(process.env.PG_URI, {
-  dialectOptions: {
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  },
-});
-
-sequelize
+db.sequelize
   .authenticate()
+  .sync({ force: true })
   .then(() => {
     console.log('Connection has been established successfully.');
   })
