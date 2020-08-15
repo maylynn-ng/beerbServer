@@ -10,9 +10,15 @@
     "pg": "^8.3.0",
     "sequelize": "^6.3.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "commitizen": "^4.1.2",
+    "cz-conventional-changelog": "^3.2.0",
+    "husky": "^4.2.5",
+    "validate-commit-msg": "^2.14.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commitmsg": "validate-commit-msg"
   },
   "repository": {
     "type": "git",
@@ -24,5 +30,27 @@
   "bugs": {
     "url": "https://github.com/maylynn-ng/beerbServer/issues"
   },
-  "homepage": "https://github.com/maylynn-ng/beerbServer#readme"
+  "homepage": "https://github.com/maylynn-ng/beerbServer#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "types": [
+        "feat",
+        "fix",
+        "docs",
+        "style",
+        "refactor",
+        "perf",
+        "test",
+        "chore",
+        "revert"
+      ],
+      "warnOnFail": false,
+      "maxSubjectLength": 100,
+      "subjectPatternErrorMsg": "Subject must be in format 'CMS-123 - Commit message'",
+      "helpMessage": ""
+    }
+  }
 }
