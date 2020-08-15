@@ -1,4 +1,4 @@
-import sequelize from './index';
+import sequelize, { Datatypes } from './index';
 
 const Location = sequize.define('Locations', {
   placeId: {

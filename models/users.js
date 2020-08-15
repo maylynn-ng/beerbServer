@@ -1,4 +1,4 @@
-import sequelize from './index.js';
+import sequelize, { Datatypes } from './index.js';
 
 const User = sequelize.define('User', {
   Name: {
