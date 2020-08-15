@@ -7,7 +7,13 @@ const app = express();
 
 const port = process.env.PORT;
 
-const sequelize = new Sequelize(process.env.PG_URI);
+const sequelize = new Sequelize(process.env.PG_URI, {
+  dialectOptions: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
+});
 
 sequelize
   .authenticate()
