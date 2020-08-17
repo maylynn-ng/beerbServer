@@ -8,8 +8,7 @@ const app = express();
 const port = process.env.PORT;
 
 db.sequelize
-  .authenticate()
-  .sync({ force: true })
+  .sync() // { force: true }
   .then(() => {
     console.log('Connection has been established successfully.');
   })

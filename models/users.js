@@ -14,6 +14,4 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(model.Location);
   };
   return User;
-}; // true
-
-//console.log(User === sequelize.models.User);
+};
