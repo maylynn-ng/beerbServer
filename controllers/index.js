@@ -13,15 +13,18 @@ exports.postLocation = async (req, res) => {
 
 exports.getLocations = async (req, res) => {
   try {
-    const [userInfo] = await User.findAll({ where: { sub: req.body.sub } });
+    const [userInfo] = await User.findAll({
+      include: [{ model: Location }],
+      where: { sub: req.body.sub },
+    });
     if (!userInfo) {
-      await User.create(req.body);
+      const newUser = await User.create(req.body);
+      newUser.dataValues['Locations'] = [];
       res.status(200);
-      res.json([]);
+      res.json(newUser);
     } else {
-      const locations = await Location.findAll({ where: { UserId: userInfo.id } });
       res.status(200);
-      res.json(locations);
+      res.json(userInfo);
     }
   } catch (error) {
     console.info('error geting locations from DB: ', error);
