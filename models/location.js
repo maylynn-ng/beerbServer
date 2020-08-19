@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Location = sequelize.define('Location', {
     placeId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     boroughId: {
@@ -9,11 +9,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     longitude: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL,
       allowNull: false,
     },
     latitude: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL,
       allowNull: false,
     },
   });

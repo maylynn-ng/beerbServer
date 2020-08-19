@@ -11,12 +11,12 @@ const app = express();
 const port = process.env.PORT;
 
 const corsConfig = {
-  origin: process.env.CLIENT_HOST,
-  credentials: true,
+  origin: 'http://localhost:19002',
+  // credentials: true,
 };
 
 app.use(morgan('dev'));
-app.use(helmet());
+// app.use(helmet());
 app.use(cors(corsConfig));
 app.use(express.json());
 
