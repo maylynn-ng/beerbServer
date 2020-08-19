@@ -1,4 +1,3 @@
-const db = {};
 const fs = require('fs');
 const Sequelize = require('sequelize');
 const path = require('path');
@@ -12,6 +11,8 @@ const sequelize = new Sequelize(process.env.PG_URI, {
     },
   },
 });
+
+const db = {};
 
 fs.readdirSync(__dirname)
   .filter(file => {

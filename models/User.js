@@ -1,17 +1,17 @@
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
-    Name: {
+  const user = sequelize.define('User', {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    Username: {
+    sub: {
       type: DataTypes.STRING,
       allowNull: false,
     },
   });
 
-  User.associate = model => {
-    User.hasMany(model.Location);
+  user.associate = model => {
+    user.hasMany(model.Location);
   };
-  return User;
+  return user;
 };
