@@ -16,6 +16,7 @@ exports.getLocations = async (req, res) => {
     const [userInfo] = await User.findAll({
       include: [{ model: Location }],
       where: { sub: req.body.sub },
+      order: [['updatedAt', 'DESC']],
     });
     if (!userInfo) {
       const newUser = await User.create(req.body);
