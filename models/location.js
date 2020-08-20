@@ -1,6 +1,26 @@
 module.exports = (sequelize, DataTypes) => {
   const Location = sequelize.define('Location', {
+    beerName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'Unknown Beer',
+    },
+    beerId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
+    placeName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'Unknown Pub',
+    },
     placeId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'Unknown Pub',
+    },
+    boroughName: {
       type: DataTypes.STRING,
       allowNull: false,
     },

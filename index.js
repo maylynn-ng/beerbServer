@@ -16,7 +16,7 @@ const corsConfig = {
 };
 
 app.use(morgan('dev'));
-// app.use(helmet());
+app.use(helmet());
 app.use(cors(corsConfig));
 app.use(express.json());
 
