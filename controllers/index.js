@@ -1,8 +1,21 @@
-const { Location, User } = require('../models');
+const { Location, User, Beer } = require('../models');
 
 exports.postLocation = async (req, res) => {
   try {
-    const newLocation = await Location.create(req.body);
+    const newLocation = await Location.create(req.body.location);
+
+    await Beer.bulkCreate(req.body.beers, { updateOnDuplicate: ['beerId'] });
+
+    // req.body.beers.map(async beer => {
+    //   let searchedBeer = await Beer.findAll({ where: { beerId: beer.beerId } });
+    //   if (!searchedBeer) {
+    //     await Beer.create(beer);
+    //   }
+    // });
+    const [selectedBeer] = await Beer.findAll({ where: { beerId: req.body.location.beerId } });
+
+    await selectedBeer.setUsers([req.body.location.UserId]);
+
     res.status(201);
     res.json(newLocation);
   } catch (error) {
