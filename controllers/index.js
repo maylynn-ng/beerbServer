@@ -4,14 +4,14 @@ exports.postLocation = async (req, res) => {
   try {
     const newLocation = await Location.create(req.body.location);
 
-    await Beer.bulkCreate(req.body.beers, { updateOnDuplicate: ['beerId'] });
+    // await Beer.bulkCreate(req.body.beers, { updateOnDuplicate: ['beerId'] }); // only updates if the id matches. Not useful for us
 
-    // req.body.beers.map(async beer => {
-    //   let searchedBeer = await Beer.findAll({ where: { beerId: beer.beerId } });
-    //   if (!searchedBeer) {
-    //     await Beer.create(beer);
-    //   }
-    // });
+    await req.body.beers.map(async beer => {
+      const [searchedBeer] = await Beer.findAll({ where: { beerId: beer.beerId } });
+      if (!searchedBeer) {
+        await Beer.create(beer);
+      }
+    });
     const [selectedBeer] = await Beer.findAll({ where: { beerId: req.body.location.beerId } });
 
     await selectedBeer.setUsers([req.body.location.UserId]);
