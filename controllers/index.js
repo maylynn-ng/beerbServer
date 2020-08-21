@@ -1,24 +1,29 @@
-const { Location, User, Beer } = require('../models');
+const { Location, User, Beer, sequelize } = require('../models');
 
 exports.postLocation = async (req, res) => {
+  const t = await sequelize.transaction();
   try {
-    const newLocation = await Location.create(req.body.location);
+    const newLocation = await Location.create(req.body.location, { transaction: t });
 
     // await Beer.bulkCreate(req.body.beers, { updateOnDuplicate: ['beerId'] }); // only updates if the id matches. Not useful for us
 
     await req.body.beers.map(async beer => {
-      const [searchedBeer] = await Beer.findAll({ where: { beerId: beer.beerId } });
+      const [searchedBeer] = await Beer.findAll({ where: { beerId: beer.beerId }, transaction: t });
       if (!searchedBeer) {
         await Beer.create(beer);
       }
     });
-    const [selectedBeer] = await Beer.findAll({ where: { beerId: req.body.location.beerId } });
+    const [selectedBeer] = await Beer.findAll({
+      where: { beerId: req.body.location.beerId },
+      transaction: t,
+    });
 
-    await selectedBeer.setUsers([req.body.location.UserId]);
-
+    await selectedBeer.setUsers([req.body.location.UserId], { transaction: t });
+    await t.commit();
     res.status(201);
     res.json(newLocation);
   } catch (error) {
+    await t.rollback();
     console.info('error creating a new Location: ', error);
     res.sendStatus(500);
   }
