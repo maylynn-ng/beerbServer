@@ -50,3 +50,30 @@ exports.getLocations = async (req, res) => {
     res.sendStatus(500);
   }
 };
+
+exports.getBeers = async (req, res) => {
+  try {
+    const beers = await Beer.findAll({
+      attributes: ['beerId', 'beerName', 'beerLabel'],
+    });
+    res.status(200);
+    res.json(beers);
+  } catch (error) {
+    console.info("Couldn't get your beers for ya...", error);
+    res.sendStatus(500);
+  }
+};
+
+exports.getDrunkBeers = async (req, res) => {
+  try {
+    const [beer] = await Beer.findAll({
+      where: { beerId: req.params.id },
+      attributes: ['beerId', 'beerName', 'beerLabel'],
+    });
+    console.log('🌵🌵🌵🌵🌵');
+    res.status(200);
+    res.json(beer);
+  } catch (error) {
+    console.info('Looks like our server is drunk... ', error);
+  }
+};
