@@ -79,5 +79,19 @@ exports.getDrunkBeers = async (req, res) => {
     res.json(drunkBeers);
   } catch (error) {
     console.info('Looks like our server is drunk... ', error);
+    res.sendStatus(500);
+  }
+};
+
+exports.searchBeer = async (req, res) => {
+  try {
+    const [foundBeer] = await Beer.findAll({
+      where: { beerId: req.params.id },
+    });
+    res.status(200);
+    res.json(foundBeer);
+  } catch (error) {
+    console.info('Wamp wamp... ', error);
+    res.sendStatus(500);
   }
 };
