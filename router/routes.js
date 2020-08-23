@@ -4,6 +4,6 @@ const { postLocation, getLocations, getBeers, getDrunkBeers } = require('../cont
 router.post('/locations', getLocations);
 router.post('/location', postLocation);
 router.get('/beers', getBeers);
-router.get('/drunkbeers/:id', getDrunkBeers);
+router.post('/drunkbeers', getDrunkBeers);
 
 module.exports = router;

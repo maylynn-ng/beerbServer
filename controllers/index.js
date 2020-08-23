@@ -66,13 +66,17 @@ exports.getBeers = async (req, res) => {
 
 exports.getDrunkBeers = async (req, res) => {
   try {
-    const [beer] = await Beer.findAll({
-      where: { beerId: req.params.id },
-      attributes: ['beerId', 'beerName', 'beerLabel'],
-    });
-    console.log('🌵🌵🌵🌵🌵');
+    const drunkBeers = await Promise.all(
+      req.body.map(async id => {
+        const [beer] = await Beer.findAll({
+          where: { beerId: id },
+          attributes: ['beerId', 'beerName', 'beerLabel'],
+        });
+        return beer;
+      })
+    );
     res.status(200);
-    res.json(beer);
+    res.json(drunkBeers);
   } catch (error) {
     console.info('Looks like our server is drunk... ', error);
   }
