@@ -4,10 +4,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    haveHad: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-    },
     beerName: {
       type: DataTypes.STRING,
       allowNull: false,
