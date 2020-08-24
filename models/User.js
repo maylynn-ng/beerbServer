@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 
   user.associate = model => {
     user.hasMany(model.Location);
+    user.belongsToMany(model.Beer, { through: 'UserBeers' });
   };
   return user;
 };
