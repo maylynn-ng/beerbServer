@@ -96,3 +96,17 @@ exports.searchBeer = async (req, res) => {
     res.sendStatus(500);
   }
 };
+
+exports.putNewFavourite = async (req, res) => {
+  try {
+    const [rowsUpdated, [updatedUser]] = await User.update(
+      { favouriteBeers: req.body.favouriteBeers },
+      { returning: true, where: { id: req.body.UserId } }
+    );
+    res.status(200);
+    res.json(updatedUser.favouriteBeers);
+  } catch (error) {
+    console.info('Not today: ', error);
+    res.sendStatus(500);
+  }
+};
