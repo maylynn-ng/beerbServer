@@ -66,6 +66,7 @@ exports.getBeers = async (req, res) => {
 
 exports.getDrunkBeers = async (req, res) => {
   try {
+    console.log('new array', req.body);
     const drunkBeers = await Promise.all(
       req.body.map(async id => {
         const [beer] = await Beer.findAll({
