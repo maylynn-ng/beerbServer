@@ -6,6 +6,7 @@ const {
   getDrunkBeers,
   searchBeer,
   putNewFavourite,
+  getRandomBeer,
 } = require('../controllers');
 
 router.post('/locations', getLocations);
@@ -14,5 +15,6 @@ router.get('/beers', getBeers);
 router.post('/drunkbeers', getDrunkBeers);
 router.get('/searchBeer/:id', searchBeer);
 router.put('/favourites', putNewFavourite);
+router.get('/discover', getRandomBeer);
 
 module.exports = router;

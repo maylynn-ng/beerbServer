@@ -110,3 +110,16 @@ exports.putNewFavourite = async (req, res) => {
     res.sendStatus(500);
   }
 };
+
+exports.getRandomBeer = async (req, res) => {
+  try {
+    const beer = await Beer.findOne({
+      order: sequelize.random(),
+    });
+    res.status(200);
+    res.json(beer);
+  } catch (error) {
+    console.log('FAIL!!!!!🔴', error);
+    res.sendStatus(500);
+  }
+};
