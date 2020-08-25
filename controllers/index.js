@@ -66,7 +66,6 @@ exports.getBeers = async (req, res) => {
 
 exports.getDrunkBeers = async (req, res) => {
   try {
-    console.log('new array', req.body);
     const drunkBeers = await Promise.all(
       req.body.map(async id => {
         const [beer] = await Beer.findAll({
@@ -113,7 +112,6 @@ exports.putNewFavourite = async (req, res) => {
 
 exports.inputBadges = async (req, res) => {
   try {
-    console.log('INPUT BADGES', req.body);
     const badge = await Badge.create(req.body);
     res.status(201);
     res.json(badge);
@@ -126,7 +124,6 @@ exports.inputBadges = async (req, res) => {
 exports.getBadges = async (req, res) => {
   try {
     const badges = await Badge.findAll();
-
     res.status(200);
     res.json(badges);
   } catch (error) {
