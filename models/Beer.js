@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    beerAbv: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+    },
     beerIbu: {
       type: DataTypes.DECIMAL,
       allowNull: false,

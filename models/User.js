@@ -8,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    favouriteBeers: {
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      default: [],
+    },
   });
 
   user.associate = model => {
