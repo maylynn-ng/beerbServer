@@ -34,7 +34,7 @@ exports.getLocations = async (req, res) => {
     const [userInfo] = await User.findAll({
       include: [{ model: Location }],
       where: { sub: req.body.sub },
-      order: [['updatedAt', 'ASC']],
+      order: [[Location, 'createdAt', 'desc']],
     });
     if (!userInfo) {
       const newUser = await User.create(req.body);
@@ -107,6 +107,19 @@ exports.putNewFavourite = async (req, res) => {
     res.json(updatedUser.favouriteBeers);
   } catch (error) {
     console.info('Not today: ', error);
+    res.sendStatus(500);
+  }
+};
+
+exports.getRandomBeer = async (req, res) => {
+  try {
+    const beer = await Beer.findOne({
+      order: sequelize.random(),
+    });
+    res.status(200);
+    res.json(beer);
+  } catch (error) {
+    console.log('FAIL!!!!!🔴', error);
     res.sendStatus(500);
   }
 };
