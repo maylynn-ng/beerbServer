@@ -1,4 +1,4 @@
-const { Location, User, Beer, sequelize } = require('../models');
+const { Location, User, Beer, sequelize, Badge } = require('../models');
 
 exports.postLocation = async (req, res) => {
   const t = await sequelize.transaction();
@@ -66,7 +66,6 @@ exports.getBeers = async (req, res) => {
 
 exports.getDrunkBeers = async (req, res) => {
   try {
-    console.log('new array', req.body);
     const drunkBeers = await Promise.all(
       req.body.map(async id => {
         const [beer] = await Beer.findAll({
@@ -120,6 +119,42 @@ exports.getRandomBeer = async (req, res) => {
     res.json(beer);
   } catch (error) {
     console.log('FAIL!!!!!🔴', error);
+    res.sendStatus(500);
+  }
+};
+
+exports.inputBadges = async (req, res) => {
+  try {
+    const badge = await Badge.create(req.body);
+    res.status(201);
+    res.json(badge);
+  } catch (error) {
+    console.info('Cannot add badge', error);
+    res.sendStatus(500);
+  }
+};
+
+exports.getBadges = async (req, res) => {
+  try {
+    const badges = await Badge.findAll();
+    res.status(200);
+    res.json(badges);
+  } catch (error) {
+    console.info('No badges for you, sir: ', error);
+    res.sendStatus(500);
+  }
+};
+
+exports.putNewBadge = async (req, res) => {
+  try {
+    const [rowsUpdated, [updatedUser]] = await User.update(
+      { badges: req.body.badge },
+      { returning: true, where: { id: req.body.UserId } }
+    );
+    res.status(200);
+    res.json(updatedUser.badge);
+  } catch (error) {
+    console.info("I don't think so, buddy: ", error);
     res.sendStatus(500);
   }
 };
