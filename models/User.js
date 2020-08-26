@@ -12,10 +12,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.ARRAY(DataTypes.INTEGER),
       default: [],
     },
-    badges: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      default: [],
-    },
   });
 
   user.associate = model => {

@@ -9,7 +9,7 @@ const {
   getRandomBeer,
   inputBadges,
   getBadges,
-  putNewBadge,
+  postNewBadge,
 } = require('../controllers');
 
 router.post('/locations', getLocations);
@@ -21,6 +21,6 @@ router.put('/favourites', putNewFavourite);
 router.get('/discover', getRandomBeer);
 router.post('/inputBadges', inputBadges);
 router.get('/getBadges', getBadges);
-router.put('/awardBadge', putNewBadge);
+router.post('/awardBadge', postNewBadge);
 
 module.exports = router;

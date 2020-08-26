@@ -32,7 +32,7 @@ exports.postLocation = async (req, res) => {
 exports.getLocations = async (req, res) => {
   try {
     const [userInfo] = await User.findAll({
-      include: [{ model: Location }],
+      include: [{ model: Location }, { model: Badge }],
       where: { sub: req.body.sub },
       order: [[Location, 'createdAt', 'desc']],
     });
@@ -145,14 +145,15 @@ exports.getBadges = async (req, res) => {
   }
 };
 
-exports.putNewBadge = async (req, res) => {
+exports.postNewBadge = async (req, res) => {
   try {
-    const [rowsUpdated, [updatedUser]] = await User.update(
-      { badges: req.body.badge },
-      { returning: true, where: { id: req.body.UserId } }
-    );
-    res.status(200);
-    res.json(updatedUser.badge);
+    console.log('in server', req.body);
+    const [badge] = await Badge.findAll({ where: { badgeName: req.body.badge.badgeName } });
+
+    await badge.setUsers([req.body.UserId]);
+
+    res.status(201);
+    res.json(badge);
   } catch (error) {
     console.info("I don't think so, buddy: ", error);
     res.sendStatus(500);
