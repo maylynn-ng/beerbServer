@@ -5,8 +5,6 @@ exports.postLocation = async (req, res) => {
   try {
     const newLocation = await Location.create(req.body.location, { transaction: t });
 
-    // await Beer.bulkCreate(req.body.beers, { updateOnDuplicate: ['beerId'] }); // only updates if the id matches. Not useful for us
-
     await req.body.beers.map(async beer => {
       const [searchedBeer] = await Beer.findAll({ where: { beerId: beer.beerId }, transaction: t });
       if (!searchedBeer) {
@@ -20,8 +18,9 @@ exports.postLocation = async (req, res) => {
 
     await selectedBeer.setUsers([req.body.location.UserId], { transaction: t });
     await t.commit();
+
     res.status(201);
-    res.json(newLocation);
+    res.json({ newLocation, selectedBeer });
   } catch (error) {
     await t.rollback();
     console.info('error creating a new Location: ', error);
@@ -32,13 +31,15 @@ exports.postLocation = async (req, res) => {
 exports.getLocations = async (req, res) => {
   try {
     const [userInfo] = await User.findAll({
-      include: [{ model: Location }, { model: Badge }],
+      include: [{ model: Location }, { model: Badge }, { model: Beer }],
       where: { sub: req.body.sub },
       order: [[Location, 'createdAt', 'desc']],
     });
     if (!userInfo) {
       const newUser = await User.create(req.body);
       newUser.dataValues['Locations'] = [];
+      newUser.dataValues['Badges'] = [];
+      newUser.dataValues['Beers'] = [];
       res.status(200);
       res.json(newUser);
     } else {
@@ -54,7 +55,8 @@ exports.getLocations = async (req, res) => {
 exports.getBeers = async (req, res) => {
   try {
     const beers = await Beer.findAll({
-      attributes: ['beerId', 'beerName', 'beerLabel'],
+      order: sequelize.random(),
+      limit: 50,
     });
     res.status(200);
     res.json(beers);
