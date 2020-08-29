@@ -70,7 +70,7 @@ Checkout a video demo of the app on [YouTube](https://www.youtube.com/watch?v=wZ
 - Fork & clone the [client repo](https://github.com/maylynn-ng/beerb)  
   Run `npm i` in beerb directory  
   Adjust the necessary env variables to match your system. There's a .env.copy file to help you with this process.  
-  (You will need an API key for the untappd and google places APIs)
+  (You will need an API key for the untappd and google places APIs)  
   Run `expo start`
 
 Android Simulator:
