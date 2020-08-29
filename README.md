@@ -7,7 +7,7 @@
 <span align="center">![ForTheBadge built-with-love](https://ForTheBadge.com/images/badges/built-with-love.svg) [![forthebadge](https://forthebadge.com/images/badges/built-for-android.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/ages-18.svg)](https://forthebadge.com)</span>
 
 <p align="center">
- <img src="./readmeFiles/BEERB.gif" alt="beerb logo" style="zoom:50%;" >
+ <img src="https://GitHub.com/maylynn-ng/beerb/blob/master/readmeFiles/BEERB.gif" alt="beerb logo" style="zoom:50%;" >
 </p>
 
 BeerB is an app that encourages you to explore London boroughs, try different beers and keep track of your adventures!
@@ -15,13 +15,13 @@ It started with an idea of a scratch map and evolved into a good looking, smooth
 BeerB is made with React Native(Expo) for Android users with the help of the amazing Untappd API and Google Places API.
 
 <p align="center">
- <img src="./readmeFiles/screenshot3.png" >
+ <img src="https://github.com/maylynn-ng/beerb/blob/master/readmeFiles/screenshot3.png" >
 </p>
 
 Once you're logged in (through Facebook or creating a profile), start logging beers and pubs to start scratching off your map - the more you discover the 'lager-er' the map! You can favorite beers, see their description and invite friends to join you. There are badges to unlock by visiting new boroughs and drinking different beers as well as a beerdex that contains a database of multiple beers for you to explore. If you don't know where to go or what to drink, try the discovery button that will give you a suggestion - and you could always ask for a new one with just one swipe!
 
 <p align="center">
- <img src="./readmeFiles/screenshot5.png" >
+ <img src="https://github.com/maylynn-ng/beerb/blob/master/readmeFiles/screenshot5.png" >
 </p>
 
 ## TLDR:
