@@ -1,7 +1,7 @@
 {
-  "name": "beerbServer",
+  "name": "beerb-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "server for the beerb app. handles connection to the database and serves as an api for the app",
   "main": "index.js",
   "dependencies": {
     "cors": "^2.8.5",
@@ -33,8 +33,8 @@
     "url": "git+https://github.com/maylynn-ng/beerbServer.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Maylynn Ng, Marijana Del Bianco, Bernat Duran",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/maylynn-ng/beerbServer/issues"
   },
