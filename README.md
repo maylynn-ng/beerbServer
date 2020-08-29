@@ -7,7 +7,7 @@
 <span align="center">![ForTheBadge built-with-love](https://ForTheBadge.com/images/badges/built-with-love.svg) [![forthebadge](https://forthebadge.com/images/badges/built-for-android.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/ages-18.svg)](https://forthebadge.com)</span>
 
 <p align="center">
- <img src="https://GitHub.com/maylynn-ng/beerb/blob/master/readmeFiles/BEERB.gif" alt="beerb logo" style="zoom:50%;" >
+ <img src="https://github.com/maylynn-ng/beerb/blob/master/readmeFiles/BEERB.gif" alt="beerb logo" style="zoom:50%;" >
 </p>
 
 BeerB is an app that encourages you to explore London boroughs, try different beers and keep track of your adventures!
