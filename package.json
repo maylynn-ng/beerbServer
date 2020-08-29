@@ -32,7 +32,23 @@
     "type": "git",
     "url": "git+https://github.com/maylynn-ng/beerbServer.git"
   },
-  "keywords": [],
+  "keywords": [
+    "server",
+    "beerb",
+    "node",
+    "express",
+    "sequelize",
+    "postgres",
+    "postgresql",
+    "beer",
+    "london",
+    "social",
+    "explore",
+    "adventure",
+    "travel",
+    "map",
+    "drinking"
+  ],
   "author": "Maylynn Ng, Marijana Del Bianco, Bernat Duran",
   "license": "MIT",
   "bugs": {
