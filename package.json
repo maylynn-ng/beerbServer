@@ -19,12 +19,14 @@
     "cz-conventional-changelog": "^3.2.0",
     "husky": "^4.2.5",
     "nodemon": "^2.0.4",
+    "sequelize-cli": "^6.2.0",
     "validate-commit-msg": "^2.14.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "commitmsg": "validate-commit-msg",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "recreateDb": "sequelize-cli db:drop && sequelize-cli db:create && sequelize-cli db:migrate && sequelize-cli db:seed:all"
   },
   "repository": {
     "type": "git",

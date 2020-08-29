@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": null,
+    "database": "beerb",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": null,
+    "database": "beerb_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": null,
+    "database": "beerb_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
