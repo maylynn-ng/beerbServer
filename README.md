@@ -35,7 +35,7 @@ Checkout a video demo of the app on [YouTube](https://www.youtube.com/watch?v=wZ
 [BeerB frontend](https://github.com/maylynn-ng/beerb)  
 [Tech Stack](#tech-stack)  
 [Running BeerB](#running-beerb)  
-[Observations](#observations)
+[Observations](#observations)  
 [Developers Team](#developers-team)  
 
 ## Tech Stack
