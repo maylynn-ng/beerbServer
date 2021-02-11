@@ -97,6 +97,7 @@ On your android device
 
 ##### Next orders
 
+- Refactor backend to use NestJS and Prisma
 - Deploy BeerB to the play store
 - Add connecting to friends
 - Add new cities
